@@ -1,0 +1,41 @@
+api:
+  base_url: "https://example.cybercns.com"
+  token: "REPLACE_WITH_API_TOKEN"
+  endpoint: "/v4/vulnerabilities"
+  page_size: 200
+  verify_ssl: true
+  additional_params:
+    includeAssetInfo: true
+
+database:
+  path: "data/vulnerabilities.sqlite3"
+
+scoring:
+  cvss_weight: 5.0
+  severity_overrides:
+    critical: 60
+    high: 40
+    medium: 20
+    low: 0
+  exploit_bonus: 15
+  patch_bonus: 8
+  age_weight: 1.0
+  age_breakpoints:
+    30: 5
+    60: 10
+    90: 15
+  criticality_weight: 4.0
+  risk_thresholds:
+    critical: 90
+    high: 70
+    medium: 40
+    low: 0
+  max_score: 120
+
+timelines:
+  default_days: 90
+  level_overrides:
+    critical: 7
+    high: 30
+    medium: 60
+    low: 90
